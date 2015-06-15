@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            padding: 3em;
+            background-color: rgba(250, 0, 0, 0.3);
+        }
+    </style>
+    <script>
+        //Event delegation - this, event.target, event.currentTarget, event.relatedTarget
+        document.addEventListener('DOMContentLoaded', function(){
+
+
+            /*var children = document.querySelector('#parent').children;
+
+            for (var i = 0; i < children.length; i++) {
+                //console.log(children[i].innerHTML);
+                children[i].addEventListener('click', function (i) {
+                    console.log(children[i].innerHTML);
+                }.bind(children[i],i));
+            }*/
+
+            //alternative way to deal with this using event delegation
+           /* var parent = document.querySelector('#parent');
+            var children1 = Array.prototype.slice.call(parent.children);
+
+            parent.addEventListener('click', function(event){
+                var index = children1.indexOf(event.target);
+                console.log(children1[index].innerHTML);
+            });*/
+
+            var parent = document.querySelector('#parent');
+            var children1 = Array.prototype.slice.call(parent.children);
+
+            parent.addEventListener('click', function(event){
+                var index = children1.indexOf(event.target);
+                //console.log(index);
+
+                if(index === -1){
+                    console.log(children1);
+                    children1.every(function (element, i){
+                       var val = element.compareDocumentPosition(event.target);
+                        console.log('val', val);
+                        index = i;
+                        return !(val === 20);
+                    });
+                    console.log(children1[index].innerHTML);
+                }
+                //console.log(children1.compareDocumentPosition(event.target));
+                console.log(children1[index].innerHTML);
+            });
+        });
+    </script>
+</head>
+<body>
+    <!--<div id="grandparent">
+        <div id="parent">
+            <div id="1">This is div 1</div>
+            <div id="2">This is div 2</div>
+            <div id="3">This is div 3</div>
+            <div id="4">This is div 4</div>
+            <div id="5">This is div 5</div>
+            <div id="6">This is div 6</div>
+        </div>
+    </div>-->
+    <div id="grandparent">
+        <div id="parent">
+            <div id="1">This is div 1
+                <div>Some Child
+                    <div>One More...</div>
+                </div>
+            </div>
+            <div id="2">This is div 2</div>
+            <div id="3">This is div 3</div>
+            <div id="4">This is div 4</div>
+            <div id="5">This is div 5</div>
+            <div id="6">This is div 6</div>
+        </div>
+    </div>
+</body>
+</html>

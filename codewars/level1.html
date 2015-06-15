@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        /*function sillycase(silly) {
+            var chars = Math.round(silly.length/2);
+
+            return ((silly.substring(0, chars).toLowerCase()).concat(silly.substring(chars, silly.length).toUpperCase()));
+
+        }
+        sillycase('Rashmika');
+        sillycase('Rashmikax');*/
+
+        /*function pattern(n) {
+            var output = "", count = 1;
+            var arry = [];
+            if (n === 0 || n < 0) {
+                output = "";
+            } else{
+                while (n >= count) {
+                    output = "";
+                    for(var i =0; i < count; i++){
+                        output = output + count;
+                    }
+                    count = count + 2;
+                    arry.push(output);
+
+                }
+            }
+            output = arry.join('\n');
+            return output;
+        }
+        console.log(pattern(4));
+        console.log(pattern(1));
+        console.log(pattern(5));
+        console.log(pattern(0));
+        console.log(pattern(-25));*/
+
+        /*function add(num) {
+            return num + 1;
+        }
+
+        function mult(num) {
+            return num * 30;
+        }
+        // returns 90;
+        function chain(input, fs) {
+            fs.forEach(function(element, i){
+                input = element.call(this,input);
+            });
+            return input;
+        }
+        console.log(chain(2, [add, mult]));*/
+
+        /*function pattern(n){
+            var output="", arry = [];
+            if(n > 0) {
+                while(n >= 1){
+                    for(var i = n; i >= n;i--){
+                        output = output + i;
+                    }
+                    arry.push(output);
+                    n--;
+                }
+            }
+            output = arry.join('\n');
+            return output;
+        }
+        console.log(pattern(4));*/
+
+        /*function caffeineBuzz(n){
+            var output = "";
+            if(check(n,3)){
+                if(check(n,4)){
+                    output = "Coffee" + "Script";
+                }else if(check(n,2)){
+                    output = "Java" + "Script";
+                }else{
+                    output = "Java"
+                }
+            }else{
+                output = "mocha_missing";
+            }
+            function check(num, div){
+                if(num%div === 0)
+                    return true;
+            }
+            return output;
+        }
+        console.log(caffeineBuzz(1));   //=> "mocha_missing!"
+        console.log(caffeineBuzz(3))   //=> "Java"
+        console.log(caffeineBuzz(6))   //=> "JavaScript"
+        console.log(caffeineBuzz(12))   //=> "CoffeeScript"*/
+
+        /*function candies(kids){
+            var value = -1;
+            if(kids.length > 1){
+                kids = kids.sort(function(a, b) {
+                    return b - a;
+                });
+                var candyCount = kids[0];
+                count = kids.map(function(number){
+                    return candyCount - number;
+                });
+                console.log(count);
+                value = count.reduce(function(prev, current){
+                    return prev + current;
+                });
+            }
+            return value;
+        }
+        console.log(candies([5,8,6,4]));
+        console.log(candies([1,2,4,6])); //[6,4,2,1]
+        console.log(candies([1,2]));
+        console.log(candies([4,2]));*/
+
+        /*function digital_root(n) {
+            var output = [];
+            var sNumber = n.toString();
+            sNumber = add_digits(sNumber);
+            function add_digits(sNumber) {
+                output = [];
+                for (var i = 0, len = sNumber.length; i < len; i++) {
+                    output.push(+sNumber.charAt(i));
+                }
+                sNumber = output.reduce(function (prev, current) {
+                    return prev + current;
+                });
+                if(sNumber.toString().length !== 1){
+                    sNumber = add_digits(sNumber.toString());
+                }
+                return sNumber;
+            }
+            return sNumber;
+        }
+        console.log(digital_root(934));*/
+
+        /*function isIntArray(arr) {
+            var output = [];
+            if(Array.isArray(arr)){
+                if(arr.length === 0){
+                    output.push(true);
+                }else{
+                    arr.forEach(function(element){
+                        if(typeof element === 'number'){
+                            if(isNaN(element)){
+                                output.push(false);
+                            }else if(Number(element) === element && element%1 === 0){
+                                output.push(true);
+                            }else{
+                                output.push(false);
+                            }
+                        }
+                    });
+                }
+            }
+            if(output.length > 0){
+                output = output.reduce(function(prev, current){
+                    return prev && current;
+                });
+            }else{
+                output = false;
+            }
+
+            return output;
+        }
+        console.log(isIntArray([]));//, true, "Input: []");
+        console.log(isIntArray([1, 2, 3, 4]));//, true, "Input: [1, 2, 3, 4]");
+        console.log(isIntArray([1, 2, 3, NaN]));//, false, "Input: [1, 2, 3, NaN]");
+        console.log(isIntArray([1.0, 2.0, 3.0001]));//, false, "Input: [1, 2, 3, NaN]");
+        console.log(isIntArray([1.23e-7, 2]));//, false, "Input: [1, 2, 3, NaN]");
+*/
+        /*function isInt(n){
+            return Number(n)===n && n%1===0;
+        }
+
+        function isFloat(n){
+            return   n===Number(n)  && n%1!==0
+        }
+        console.log(isInt(3.213));
+        console.log(isFloat(3.23e-7));*/
+
+        /*function windComponents(rwy, windDirection, windSpeed) {
+            var cw = 0, hw=0, A= 0, hwc = "", cwc = "", output = [];
+            rwy = parseInt(rwy.match(/\d+/)[0]) * 10;
+            A = (windDirection-rwy) * (Math.PI/180);
+            cw =Math.round((Math.sin(A)) * windSpeed);
+            hw = Math.round((Math.cos(A)) * windSpeed);
+            if(Math.round((Math.cos(A)) === 0) || hw < 0){
+                hwc = "Tail";
+            }else{
+                hwc = "Head";
+            }
+            if(Math.round((Math.sin(A)) === 0) || cw > 0){
+                cwc = "right";
+            }else{
+                cwc = "left";
+            }
+            output.push(hwc, 'wind ', Math.abs(hw), ' knots.',' Crosswind ',Math.abs(cw), ' knots from your ', cwc, '.');
+            return output.join('');
+        }
+        console.log(windComponents("18L",170,15));
+        // "Headwind 15 knots. Crosswind 3 knots from your left." )
+        console.log(windComponents("01C",170,15));
+        console.log(windComponents("36D",170,15));
+        console.log(windComponents("22", 160, 20));
+                //"Headwind 10 knots. Crosswind 17 knots from your left." )*/
+        /*function f(n, m) {
+            var output = {}, sum=0;
+            for(var i = 1; i <= n; i++){
+                output[i] = (i%m);
+            }
+            for(var i =1; i <= Object.keys(output).length; i++){
+                sum = sum + output[i];
+            }
+            return sum;
+        }
+        console.log(f(10, 5));//20
+        console.log(f(20, 20));//190
+        console.log(f(15, 10));//60
+        //console.log(f(27903912, 27153414));
+
+        function validPhoneNumber(phoneNumber){
+            //TODO: Return whether phoneNumber is in the proper form
+            return /^(\()?\d{3}(\))(\s)\d{3}(-|)\d{4}$/.test(phoneNumber);
+        }*/
+        //Test.assertEquals(validPhoneNumber("(123) 456-7890"), true);
+
+        /*function list(names){
+            var fString = '',iniStr = [], lastStr = [];
+            if(names.length > 2) {
+                var output = names.splice((names.length) - 2, names.length);
+                names.forEach(function (element) {
+                    iniStr.push(element.name);
+                });
+                output.forEach(function (element) {
+                    lastStr.push(element.name);
+                });
+                fString = iniStr.join(', ')+ ', ' + lastStr.join(' & ');
+            }else if(names.length === 2){
+                names.forEach(function(element){
+                   lastStr.push(element.name);
+                });
+                fString = lastStr.join(' & ');
+            }else if(names.length === 1){
+                fString =  names[0].name;
+            }
+            return fString;
+        }
+        console.log(list([{name: 'Bart'},{name: 'Lisa'},{name: 'Maggie'},{name: 'Homer'},{name: 'Marge'}]));//, 'Bart, Lisa, Maggie, Homer & Marge',"Must work with many names")
+        console.log(list([{name: 'Bart'},{name: 'Lisa'},{name: 'Maggie'}]));//, 'Bart, Lisa & Maggie',"Must work with many names")
+        console.log(list([{name: 'Bart'},{name: 'Lisa'}]));//, 'Bart & Lisa',"Must work with two names")
+        console.log(list([{name: 'Bart'}]));//, 'Bart', "Wrong output for a single name")
+        console.log(list([]));//, '', "Must work with no names")*/
+
+        /*function palindrome(string) {
+            string = string.replace(/\W+/g, "").toLowerCase();
+            var arr = string.split(''), output= true;
+            for(var i= 0,j=arr.length - 1; i <= Math.floor((arr.length)/2),j >= Math.floor((arr.length)/2);i++,j--){
+                if(arr[i] !== arr[j])
+                    output = false;
+            }
+            return output;
+        }
+        console.log(palindrome("Amore, Roma"));//, true)
+        console.log(palindrome("A man, a plan, a canal: Panama"));//, true)
+        console.log(palindrome("No 'x' in 'Nixon'"));//, true)
+        console.log(palindrome("Abba Zabba, you're my only friend"));//, false)*/
+
+        /*function groupByCommas(n) {
+            var arr = [], ary = [];
+            ary = n.toString().split('').reverse();
+            for(var i= ary.length; i >= 0; i--){
+                arr.push(ary[i]);
+                if(i % 3 === 0){
+                    if(i !== 0 && i !== ary.length){
+                        arr.push(',');
+                    }
+                    //console.log(i,arr[i]);
+                }
+            }
+            return arr.join('');
+        }
+        console.log(groupByCommas(1));//, '1');
+        console.log(groupByCommas(10));//, '10');
+        console.log(groupByCommas(100));//, '100');
+        console.log(groupByCommas(1000));//, '1,000');
+        console.log(groupByCommas(10000));//, '10,000');
+        console.log(groupByCommas(100000));//, '100,000');
+        console.log(groupByCommas(1000000));//, '1,000,000');
+        console.log(groupByCommas(35235235));//, '35,235,235');*/
+
+        /*function squareSum(numbers){
+            return numbers.map(function(element){
+                return element * element;
+            }).reduce(function(prev, current){
+               return prev+current;
+            });
+        }
+        console.log(squareSum([1, 2, 2])); // should return 9*/
+
+        /*function narcissistic( value ) {
+            var n = value.toString(), output = [], num = 0, str = false;
+            output = n.split('');
+            num = output.length;
+            output = output.map(function(element){
+                return Math.pow(+element, num);
+            });
+            num = output.reduce(function(prev, current){
+               return prev + current;
+            });
+            if(num === value)
+                 str = true;
+            return str;
+        }
+        console.log(narcissistic(7));
+        console.log(narcissistic(371));
+        console.log(narcissistic(153));
+        console.log(narcissistic(1634));*/
+
+        function onLine(points) {
+            if(points.length >= 3){
+                var first = points.slice(1), second = points.slice(0,2);
+                if(((first[1][1] - first[0][1])/(first[1][0]-first[0][0])) === ((second[1][1] - second[0][1])/(second[1][0] - second[0][0])))
+                    return true;
+                else
+                    return false;
+            }else
+                return true;
+            //console.log(((first[1][1] - first[0][1])/(first[1][0]-first[0][0])));
+            //console.log(((second[1][1] - second[0][1])/(second[1][0] - second[0][0])));
+        }
+        console.log(onLine([[1,2], [7, 4], [22, 9]]));// === true, 'Three poistive points on a line')
+        console.log(onLine([[1,2], [-3, -14], [22, 9]]));// === false, 'The second point in not on line')
+        console.log(onLine([[1,2], [-3, -14], [22, 9],[0,4]]));// === false, 'The second point in not on line')
+    </script>
+</head>
+<body>
+
+</body>
+</html>

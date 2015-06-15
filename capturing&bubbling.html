@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Capturing and Bubbling</title>
+    <style>
+        div{
+            padding: 3em;
+            background-color: rgba(250, 0, 0, 0.3);
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            var container = document.body.firstElementChild;
+            var gp = container.firstElementChild;
+            var parent = gp.firstElementChild;
+            var child = parent.firstElementChild;
+            function printEventPhase(event){
+                console.log(event.eventPhase);
+            }//eventPhase=1 (capturing),eventPhase=2 (at target),eventPhase=3 (bubbling)
+            container.addEventListener('click', printEventPhase, false);//false(capturing - default), true (bubbling)
+            gp.addEventListener('click', printEventPhase, false);
+            parent.addEventListener('click', printEventPhase, false);
+            child.addEventListener('click', printEventPhase, false);
+
+        });
+    </script>
+</head>
+<body>
+    <div id="'container">
+        <div id="grandparent">
+            <div id="parent">
+                <div id="child"></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
