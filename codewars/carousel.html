@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .container{
+            width: 800px;
+            margin: 0 auto;
+            margin-top: 150px;
+        }
+        div#carousel, div#leftArrow, div#rightArrow{
+            float: left;
+        }
+        #carousel{
+            width: 400px;
+            height: 400px;
+            overflow-x: scroll;
+        }
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: inline-flex;
+        }
+        li {
+            height: 400px;
+            text-align: center;
+            display: inline-flex;
+            float: left;
+            width: 400px;
+        }
+        li:nth-child(2n){
+            background-color:rgba(0,255,0,0.3);
+        }
+        li:nth-child(2n+1){
+            background-color:rgba(255,0,0,0.3);
+        }
+        #leftArrow{
+            background-image: url('arrowleft.jpg');
+        }
+        #rightArrow{
+            background-image: url('arrowright.png');
+            margin-left: 10px;
+        }
+        div#rightArrow, div#leftArrow{
+            padding: 30px;
+            background-size: 50px 50px;
+            background-repeat: no-repeat;
+            margin-top: 170px;
+        }
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            var li = document.querySelectorAll('ul li');
+            var div = document.querySelector('#carousel');
+            var leftArrow = document.querySelector('#leftArrow');
+            var rightArrow = document.querySelector('#rightArrow');
+            /*console.log(li);*/
+            rightArrow.addEventListener('click', function(){
+                div.scrollLeft += li[0].offsetWidth;
+            });
+            leftArrow.addEventListener('click', function(){
+                div.scrollLeft -= li[0].offsetWidth;
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+    <div id="leftArrow"></div>
+    <div id="carousel">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <div id="rightArrow"></div>
+</div>
+</body>
+</html>

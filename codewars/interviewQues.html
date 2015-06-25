@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function test(x,y){
+            if(arguments.length === test.length){
+                return x + y;
+            }else{
+                console.log('arguments', typeof arguments);
+                return test.bind(test, Array.prototype.slice.call(arguments));
+            }
+        }
+        //console.log(test(2,3));
+        console.log(test(2)(3));
+
+        /*function test(x ,y){
+            return x + y;
+        }
+        var x = test.bind(test, 5);
+        console.log(x(3));*/
+
+
+       /* var fn = console.log.bind(console);
+        console.log = function (arg){
+            fn("Hello " + arg);
+        }
+        console.log('Nina');*/
+
+        /*function Animal(){
+
+        }
+        Animal.prototype.eat = function(){
+            console.log('eat function');
+        }
+        function Dog(){
+
+        }
+        Dog.prototype = new Animal();
+        Dog.prototype.constructor = Dog;
+        Dog.prototype.bark = function(){
+            console.log('bark function');
+        }
+        var gr = new Dog();
+        gr.bark();
+        gr.eat();*/
+
+        /*function test(x){ //Passed by value
+            x = 'Jui';
+        }
+        var a = 'Aditya';
+        test(a);
+        console.log(a); //still prints Aditya
+
+        function test2(x){ //passed by value
+            x.name = 'Jui';
+        }
+        a = {name: 'Aditya'}; //a --> #33; #33 -->{name: 'Aditya'}
+        test2(a);
+        console.log(a);
+
+        function test2(x){
+            x = {name: 'Jui'};
+        }
+        a = {name: 'Aditya'};
+        test2(a);
+        console.log(a);*/
+
+        /*true.toString(); // prints 'true'
+        4.toString(); //throws error
+        */
+
+    </script>
+</head>
+<body>
+</body>
+</html>
