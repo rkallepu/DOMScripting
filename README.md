@@ -1,2 +1,1 @@
-# magellan-jun-12
-DOM Scripting
+# DOM Scripting Practise
